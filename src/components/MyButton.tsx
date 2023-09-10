@@ -1,9 +1,14 @@
 import React from 'react';
 
-const MyButton = () => {
+interface MyButtonProps {
+  children: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const MyButton = ({children, onClick}: MyButtonProps) => {
   return (
     <div>
-      <button>My Button</button>
+      <button onClick={onClick}>{children}</button>
     </div>
   );
 };
