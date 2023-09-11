@@ -16,7 +16,17 @@ function App() {
   const [productList, setProductList] = useState<IProduct[]>([{id:1, name: "Banana", count: 5, inCart: true, price:25}])
 
   const addProduct = (product: IProduct) => {
+    product.id = Math.max(...productList.map((p)=>p.id), 0) + 1;
     setProductList([...productList, product])
+  }
+
+  const updateProduct = (product: IProduct) => {
+    setProductList(productList.map((p) => p.id === product.id? product : p))
+  }
+
+
+  const delProduct = (product: IProduct) => {
+    setProductList(productList.filter((p)=> p.id !== product.id))
   }
 
   return (

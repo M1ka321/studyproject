@@ -4,7 +4,7 @@ import MyButton from "./MyButton";
 import product, {IProduct} from "./Product";
 import Product from "./Product";
 
-const initvalue: IProduct = {
+const initValue: IProduct = {
   id: 0,
   count: 1,
   inCart: false,
@@ -21,7 +21,7 @@ const MyForm = ({addProduct}:MyFormProps) => {
     alert('Нажата кнопка')
   }
 
-  const [product, setProduct] = useState<IProduct>(initvalue)
+  const [product, setProduct] = useState<IProduct>(initValue)
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setProduct({
       ...product,
@@ -32,6 +32,7 @@ const MyForm = ({addProduct}:MyFormProps) => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement>= (e) => {
     e.preventDefault()
     addProduct(product)
+    setProduct(initValue)
   }
 
   return (
