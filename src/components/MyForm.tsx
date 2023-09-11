@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import MyInput from "./MyInput";
 import MyButton from "./MyButton";
-import {IProduct} from "./Product";
+import product, {IProduct} from "./Product";
+import Product from "./Product";
 
 const initvalue: IProduct = {
   id: 0,
@@ -10,7 +11,11 @@ const initvalue: IProduct = {
   name: "",
   price: 0,
 }
-const MyForm = () => {
+
+interface MyFormProps  {
+  addProduct: (product:IProduct) => void
+}
+const MyForm = ({addProduct}:MyFormProps) => {
 
   const showAlert = () => {
     alert('Нажата кнопка')
@@ -22,16 +27,19 @@ const MyForm = () => {
       ...product,
       [e.target.name]: e.target.value
     });
-
-    console.log(product)
-
   }
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement>= (e) => {
+    e.preventDefault()
+    addProduct(product)
+  }
+
   return (
-    <form>
-      <MyInput name="name" value={product.name} handleChange={handleChange}/>
-      <MyInput name="count" value={product.count} handleChange={handleChange}/>
-      <MyInput name="price" value={product.price} handleChange={handleChange}/>
-      <MyButton onClick={showAlert}>
+    <form onSubmit={handleSubmit}>
+      <MyInput type="text" name="name" value={product.name} handleChange={handleChange}/>
+      <MyInput type="number" name="count" value={product.count} handleChange={handleChange}/>
+      <MyInput type="number" name="price" value={product.price} handleChange={handleChange}/>
+      <MyButton type="button">
         Добавить товар
       </MyButton>
 

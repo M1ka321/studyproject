@@ -2,7 +2,8 @@ import React from 'react';
 
 interface MyButtonProps {
   children: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type: "button" | "string" | "reset"
 }
 
 const MyButton = ({children, onClick}: MyButtonProps) => {

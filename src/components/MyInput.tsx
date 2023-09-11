@@ -1,16 +1,17 @@
 import React from 'react';
-import {Interface} from "readline";
+
 
 interface MyInputProps {
   value: any;
   name: string;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  type?: "text" | "number"
 }
 
-const MyInput = ({value, handleChange, name}: MyInputProps) => {
+const MyInput = ({value, handleChange, name, type="text"}: MyInputProps) => {
   return (
     <div>
-      <input type="text" value={value} onChange={handleChange} name={name}/>
+      <input type={type} value={value} onChange={handleChange} name={name}/>
     </div>
   );
 };

@@ -9,22 +9,20 @@ import Button2 from "./components/Button2";
 import Counter from "./components/Counter";
 import MyInput from "./components/MyInput";
 import MyForm from "./components/MyForm";
+import product from "./components/Product";
 
 function App() {
 
+  const [productList, setProductList] = useState<IProduct[]>([{id:1, name: "Banana", count: 5, inCart: true, price:25}])
 
-  const [count, setCount] = useState<number>(0)
-  // const inc = () => setCount(count + 1)
-  // const dec = () => setCount(count - 1)
+  const addProduct = (product: IProduct) => {
+    setProductList([...productList, product])
+  }
 
   return (
     <div>
-      {/*<Profile/>*/}
-      {/*<ProductList/>*/}
-      <MyForm/>
-      {/*<Counter count={count} inc={inc} dec={dec}/>*/}
-      {/*<Counter count={count} inc={inc} dec={dec}/>*/}
-      {/*<Button2 message="Кнопка 2 нажата">Кнопка 2</Button2>*/}
+      <MyForm addProduct = {addProduct}/>
+      <ProductList products={productList}/>
     </div>
   );
 }

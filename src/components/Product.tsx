@@ -18,11 +18,13 @@ const Product = (props :ProductProps) => {
 
   return (
     <div>
-      <span className="span">{inCart && "!!!!"}</span>
+      <span className="span">{inCart && "✓"}</span>
       <span className="span">{name}</span>
       <span className="span">{count}</span>
       <span className="span">{price}</span>
       <span className="span">{price*count}</span>
+      <button>+1</button>
+      <button>-1</button>
     </div>
   );
 };
