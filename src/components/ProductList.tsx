@@ -3,14 +3,22 @@ import Product, {IProduct} from "./Product";
 
 interface ProductListProps{
   products: IProduct[];
+  deleteProduct: (product: IProduct)=>void
+  updateProduct: (product: IProduct)=>void
 }
 
-const ProductList = ({products} :ProductListProps) => {
+const ProductList = ({products, updateProduct, deleteProduct} :ProductListProps,) => {
 
   return (
     <div>
       {
-      products.map(product => <Product key={product.id} product={product}/>)
+      products.map(product =>
+        <Product
+        updateProduct={updateProduct}
+        deleteProduct={deleteProduct}
+        key={product.id}
+        product={product}
+      />)
       }
     </div>
   );

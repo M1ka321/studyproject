@@ -1,17 +1,20 @@
 import React from 'react';
 
-interface MyButtonProps {
+
+
+  interface MyButtonProps {
   children: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type: "button" | "string" | "reset"
 }
 
-const MyButton = ({children, onClick}: MyButtonProps) => {
-  return (
-    <div>
-      <button onClick={onClick}>{children}</button>
-    </div>
-  );
-};
+  const MyButton = ({ children, type = "button", onClick, disabled = false }: MyButtonProps) => {
+    return (
+        <button disabled={disabled} className="btn btn-primary" type={type} onClick={onClick}>
+          {children}
+        </button>
+        );
+        };
 
 export default MyButton;

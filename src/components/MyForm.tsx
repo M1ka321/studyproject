@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import MyInput from "./MyInput";
 import MyButton from "./MyButton";
-import product, {IProduct} from "./Product";
-import Product from "./Product";
+import {IProduct} from "./Product";
+
 
 const initValue: IProduct = {
   id: 0,
@@ -17,9 +17,7 @@ interface MyFormProps  {
 }
 const MyForm = ({addProduct}:MyFormProps) => {
 
-  const showAlert = () => {
-    alert('Нажата кнопка')
-  }
+
 
   const [product, setProduct] = useState<IProduct>(initValue)
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -40,7 +38,7 @@ const MyForm = ({addProduct}:MyFormProps) => {
       <MyInput type="text" name="name" value={product.name} handleChange={handleChange}/>
       <MyInput type="number" name="count" value={product.count} handleChange={handleChange}/>
       <MyInput type="number" name="price" value={product.price} handleChange={handleChange}/>
-      <MyButton type="button">
+      <MyButton type="submit">
         Добавить товар
       </MyButton>
 
