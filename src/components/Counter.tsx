@@ -1,17 +1,15 @@
-import React from 'react';
+import MyButton from "./MyButton";
 
 interface CounterProps {
-  count: number
-  dec:  React.MouseEventHandler<HTMLButtonElement>
-  inc:  React.MouseEventHandler<HTMLButtonElement>
+  count: number;
+  onIncrement: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Counter = ({count, inc, dec}: CounterProps) => {
+const Counter = ({ count, onIncrement }: CounterProps) => {
   return (
     <div>
       <strong>{count}</strong>
-      <button onClick={inc}>Inc</button>
-      <button onClick={dec}>Dec</button>
+      <MyButton onClick={onIncrement}>+ 1</MyButton>
     </div>
   );
 };

@@ -1,7 +1,5 @@
 import MyButton from "./MyButton";
 
-
-
 export interface IProduct {
   id: number;
   name: string;
@@ -61,7 +59,5 @@ const Product = ({ product, updateProduct, deleteProduct }: ProductProps) => {
     </tr>
   );
 };
-
-
 
 export default Product;

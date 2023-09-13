@@ -1,19 +1,30 @@
-import React from 'react';
-
-
 interface MyInputProps {
-  value: any;
-  name: string;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
-  type?: "text" | "number"
+    value: string | number;
+    name: string;
+    type?: "text" | "number";
+    placeholder?: string;
+    handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const MyInput = ({value, handleChange, name, type="text"}: MyInputProps) => {
-  return (
-    <div>
-      <input type={type} value={value} onChange={handleChange} name={name}/>
-    </div>
-  );
+const MyInput = ({
+                     value,
+                     name,
+                     placeholder = "",
+                     type = "text",
+                     handleChange,
+                 }: MyInputProps) => {
+    return (
+        <div className="mb-3">
+            <input
+                className="form-control"
+                type={type}
+                name={name}
+                onChange={handleChange}
+                value={value}
+                placeholder={placeholder}
+            />
+        </div>
+    );
 };
 
 export default MyInput;
