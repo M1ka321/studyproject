@@ -1,9 +1,6 @@
-import {IProduct} from "../components/Product";
 
-interface IActionProduct {
-    type: "add" | "update" | "delete",
-    payload: IProduct
-}
+
+
 
 export const productReducer = (products: IProduct[], { type, payload: product }: IActionProduct) => {
     switch (type) {

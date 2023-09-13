@@ -1,12 +1,7 @@
 import MyButton from "./MyButton";
+import {IProduct} from "../types";
 
-export interface IProduct {
-  id: number;
-  name: string;
-  count: number;
-  price: number;
-  inCart: boolean;
-}
+
 
 interface ProductProps {
   product: IProduct;

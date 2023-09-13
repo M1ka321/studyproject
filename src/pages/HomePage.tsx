@@ -1,16 +1,14 @@
-import React, { useReducer } from 'react';
-import {IProduct} from "../components/Product";
+import React from 'react';
 import MyForm from "../components/MyForm";
 import ProductList from "../components/ProductList";
-import {productReducer} from "../store/ProductReducer";
-import ThemesChanger from "../components/ThemeChanger";
 
-const initialState = [
-    { id: 1, count: 1, name: "Бананы", inCart: false, price: 1000 },
-]
+import ThemesChanger from "../components/ThemeChanger";
+import ProductsProvider from "../context/ProductContext/ProductsProvider";
+
+
 
 const HomePage = () => {
-    const [productList, dispatch] = useReducer(productReducer, initialState);
+
 
     const addProduct = (product: IProduct) => {
         dispatch({
@@ -43,15 +41,17 @@ const HomePage = () => {
                   <MyForm addProduct={addProduct} />
               </div>
           </div>
-          <div className="row">
-              <div className="col-12">
-                  <ProductList
-                    products={productList}
-                    updateProduct={updateProduct}
-                    deleteProduct={deleteProduct}
-                  />
+          <ProductsProvider>
+              <div className="row">
+                  <div className="col-12">
+                      <ProductList
+                        products={productList}
+                        updateProduct={updateProduct}
+                        deleteProduct={deleteProduct}
+                      />
+                  </div>
               </div>
-          </div>
+          </ProductsProvider>
       </>
 
     );
